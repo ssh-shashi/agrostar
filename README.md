@@ -5,7 +5,7 @@ steps to install the project
 1. install Python 3.6.7
 
 2.create virtualenv environment for installing python packages dependencies
-   (command - virtualenv -p python3 envname && source <your virtual_env name>/bin/activate)
+   (command - virtualenv -p python3 envname && source your_virtual_env_name/bin/activate)
 
 3. install all the packages in the requirements file (requirements.txt) 
   (command - pip install -r requirements.txt  )
