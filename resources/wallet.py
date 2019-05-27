@@ -30,7 +30,8 @@ wallet_schema = WalletSchema()
 
 
 class WalletCrud(Resource):
-
+    
+    # get api to get the balance of wallet userid .
     def get(self,**kwargs):
         try:
             wallet_id= int(kwargs.get('wallet_id'))
@@ -49,7 +50,8 @@ class WalletCrud(Resource):
 
 
 class TransactionCrud(Resource):
-
+    
+    # get api to get the all transactions of the given wallet userid
     def get(self,**kwargs):
         try:
             wallet_id= int(kwargs.get('wallet_id'))
@@ -64,6 +66,7 @@ class TransactionCrud(Resource):
     
 class WalletTransaction(Resource):
 
+    # delete api to revert back the done transaction
     def delete(self,**kwargs):
         try:
             wallet_id= int(kwargs.get('wallet_id'))
@@ -92,6 +95,9 @@ class WalletTransaction(Resource):
 
 
 class RevertTransaction(Resource):
+
+
+    # post api to add credit or debit to the given wallet id
     def post(self,**kwargs):
 
         try:
