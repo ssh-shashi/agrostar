@@ -2,8 +2,9 @@ from flask_jwt import jwt_required, current_identity
 from flask_restful import marshal_with, fields, reqparse
 from models import session,Wallet,Transaction
 from resources.base_resource import BaseResource as Resource
-from flask import Response,request
+from flask import Response,request,Flask
 import json
+from flask_restplus import Api
 from sqlalchemy import text
 from resource_exception import handle_exceptions
 from flask import request, jsonify
@@ -14,8 +15,10 @@ from flask_jwt_extended import (create_access_token, create_refresh_token,
                                 jwt_required, jwt_refresh_token_required, get_jwt_identity,JWTManager)
 __author__ = 'shashi'
 
-
-# Custom validator
+app = Flask('agrostar')
+api = Api(app)
+parser = api.parser()
+parser.add_argument('payload', type=list,required=True,location='json',help='for ex: {"amount":1234,"type":"DEBIT"}')
 def must_not_be_blank(data):
     if not data:
         raise ValidationError('Data not provided.')
@@ -98,6 +101,7 @@ class RevertTransaction(Resource):
 
 
     # post api to add credit or debit to the given wallet id
+    @api.expect(parser, validate=True)
     def post(self,**kwargs):
 
         try:

@@ -5,6 +5,7 @@ __author__ = 'shashi rest api '
 
 
 def create_restful_api(app):
+    # api = Api(app)
     api = Api(app)
 
     CORS(app, resources={r"*": {"origins": "*"}})
@@ -12,6 +13,6 @@ def create_restful_api(app):
     api.add_resource(WalletCrud, '/wallets/<string:wallet_id>',endpoint="get wallet balance")
     api.add_resource(TransactionCrud, '/wallets/<string:wallet_id>/transaction',endpoint="get wallet all transaction")
     api.add_resource(WalletTransaction, '/wallet/<string:wallet_id>/transaction/<string:transaction_id>',endpoint="delete_transaction")
-    api.add_resource(RevertTransaction, '/wallets/<string:wallet_id>/transaction/<string:transaction_id>',endpoint="revert transaction")
+    api.add_resource(RevertTransaction, '/wallet/<string:wallet_id>/transaction',endpoint="revert transaction")
     
    
