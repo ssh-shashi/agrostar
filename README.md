@@ -16,5 +16,7 @@ steps to install the project
 
 5. open http://127.0.0.1:5000/  in browser ( swagger api doc to test api's mentioned.)
 
+6.to run unittests it is written inside test folder ,simply run test_api.py
 
-6. please report to me at shashi12533@gmail.com /9112042174 anytime if problem with the project.
+
+7. please report to me at shashi12533@gmail.com /9112042174 anytime if problem with the project.
